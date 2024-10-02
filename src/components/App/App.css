@@ -3,12 +3,3 @@
   margin: 0 auto;
   padding: 2rem;
 }
-
-.link {
-  color: black;
-  font-size: 18px;
-}
-
-.link.active {
-  color: rgb(195, 5, 5);
-}
