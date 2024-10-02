@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export async function fetchRequest(url) {
+export default async function fetchRequest(url) {
   console.log(url);
   const options = {
     headers: {
