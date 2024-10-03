@@ -10,7 +10,7 @@ function Navigation() {
   return (
     <div className={css.navContainer}>
       <nav className={css.nav}>
-        <NavLink to="/" className={buildNavLinkClass} end>
+        <NavLink to="/" className={buildNavLinkClass}>
           Home
         </NavLink>
 

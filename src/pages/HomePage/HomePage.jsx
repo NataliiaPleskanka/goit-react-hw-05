@@ -1,7 +1,36 @@
-import React from "react";
+import MovieList from "../../components/MovieList/MovieList";
+import Loader from "../../components/Loader/Loader";
+import { fetchMovies } from "../../services/tmdb-api";
+import { useEffect, useState } from "react";
 
 const HomePage = () => {
-  return <div>HomePage</div>;
+  const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+
+  useEffect(() => {
+    const getMovies = async () => {
+      try {
+        setError(false);
+        const data = await fetchMovies();
+        setMovies(data);
+      } catch {
+        setError(true);
+      } finally {
+        setLoading(false);
+      }
+    };
+    getMovies();
+  }, []);
+
+  return (
+    <>
+      <h2>Trending today</h2>
+      {error && <p>Oops, something went wrong! Please try again later.</p>}
+      {loading && <Loader />}
+      {movies && <MovieList movies={movies} />}
+    </>
+  );
 };
 
 export default HomePage;
