@@ -36,19 +36,23 @@ const MovieDetailsPage = () => {
     getMovieDetails();
   }, [movieId]);
 
-  const buildLinkClass = ({ isActive }) => {
-    return clsx(css.link, isActive && css.activeLink);
+  const buildNavLinkClass = ({ isActive }) => {
+    return clsx(css.link, isActive && css.active);
   };
 
   if (loading) return <Loader />;
   if (error) return <p>Something went wrong! Please try again later.</p>;
-
   if (!movie) return <p>Loading movie details...</p>;
 
   return (
-    <>
-      <Link to={location.state?.from ?? "/"}>Go back</Link>
-      <div>
+    <div className={css.wrapperDetails}>
+      <div className={css.wrapperGoBack}>
+        <Link className={css.linkGoBack} to={location.state?.from ?? "/"}>
+          Go back
+        </Link>
+      </div>
+
+      <div className={css.detailsList}>
         <img
           className={css.poster}
           src={
@@ -59,15 +63,15 @@ const MovieDetailsPage = () => {
           width={250}
           alt={movie.title}
         />
-        <div>
+        <div className={css.info}>
           <h1>{movie.title}</h1>
-          <p className={css.title}>
+          <p>
             User Score:{" "}
             {movie.vote_average ? movie.vote_average.toFixed(1) : "N/A"}
           </p>
           <h2>Overview</h2>
-          <p className={css.title}>{movie.overview}</p>
-          <div className={css.genres}>
+          <p>{movie.overview}</p>
+          <div>
             <h3>Genres</h3>
             <p>
               {movie.genres
@@ -78,19 +82,21 @@ const MovieDetailsPage = () => {
         </div>
       </div>
 
-      <div className={css.navLinks}>
-        <NavLink className={buildLinkClass} to="cast">
-          Cast
-        </NavLink>
-        <NavLink className={buildLinkClass} to="reviews">
-          Reviews
-        </NavLink>
+      <div className={css.navContainer}>
+        <nav className={css.nav}>
+          <NavLink className={buildNavLinkClass} to="cast">
+            Cast
+          </NavLink>
+          <NavLink className={buildNavLinkClass} to="reviews">
+            Reviews
+          </NavLink>
+        </nav>
       </div>
 
       <Suspense fallback={<Loader />}>
         <Outlet />
       </Suspense>
-    </>
+    </div>
   );
 };
 
