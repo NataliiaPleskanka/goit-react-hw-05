@@ -11,7 +11,7 @@ const MovieList = ({ movies }) => {
       <ul className={css.movieList}>
         {movies.map((movie) => (
           <li className={css.movieCard} key={movie.id}>
-            <Link to={`/movies/${movie.id}`} state={location}>
+            <Link to={`/movies/${movie.id.toString()}`} state={location}>
               <img
                 className={css.poster}
                 src={
