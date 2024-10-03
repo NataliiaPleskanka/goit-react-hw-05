@@ -2,6 +2,7 @@ import MovieList from "../../components/MovieList/MovieList";
 import Loader from "../../components/Loader/Loader";
 import { fetchMovies } from "../../services/tmdb-api";
 import { useEffect, useState } from "react";
+import css from "./HomePage.module.css";
 
 const HomePage = () => {
   const [movies, setMovies] = useState([]);
@@ -25,7 +26,7 @@ const HomePage = () => {
 
   return (
     <>
-      <h2>Trending today</h2>
+      <h2 className={css.title}>Trending today</h2>
       {error && <p>Oops, something went wrong! Please try again later.</p>}
       {loading && <Loader />}
       {movies && <MovieList movies={movies} />}

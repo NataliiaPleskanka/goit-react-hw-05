@@ -7,15 +7,11 @@ const MovieList = ({ movies }) => {
     "https://dummyimage.com/400x600/cdcdcd/000.jpg&text=No+poster";
 
   return (
-    <div className={css.gallery}>
+    <>
       <ul className={css.movieList}>
         {movies.map((movie) => (
-          <li className={css.movie} key={movie.id}>
-            <Link
-              className={css.movieLinks}
-              to={`/movies/${movie.id}`}
-              state={location}
-            >
+          <li className={css.movieCard} key={movie.id}>
+            <Link to={`/movies/${movie.id}`} state={location}>
               <img
                 className={css.poster}
                 src={
@@ -31,7 +27,7 @@ const MovieList = ({ movies }) => {
           </li>
         ))}
       </ul>
-    </div>
+    </>
   );
 };
 
