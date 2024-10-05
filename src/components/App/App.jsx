@@ -3,6 +3,7 @@ import { lazy, Suspense } from "react";
 import "./App.css";
 import Navigation from "../Navigation/Navigation";
 import Loader from "../Loader/Loader";
+import { Toaster } from "react-hot-toast";
 
 const HomePage = lazy(() => import("../../pages/HomePage/HomePage"));
 const MoviesPage = lazy(() => import("../../pages/MoviesPage/MoviesPage"));
@@ -31,6 +32,7 @@ function App() {
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Suspense>
+      <Toaster position="top-right" reverseOrder={false} />
     </>
   );
 }

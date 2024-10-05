@@ -11,8 +11,8 @@ function SearchForm({ onSubmit }) {
     const formValue = form.elements.search.value.trim();
 
     if (formValue === "") {
-      return toast.error("Please, specify your request.", {
-        position: "top-right",
+      return toast.error("No movies found for your search.", {
+        position: "bottom-right",
       });
     }
     onSubmit(formValue);
@@ -36,9 +36,5 @@ function SearchForm({ onSubmit }) {
     </form>
   );
 }
-
-SearchForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-};
 
 export default SearchForm;
