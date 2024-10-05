@@ -1,8 +1,9 @@
 import toast from "react-hot-toast";
 import { FaSearch } from "react-icons/fa";
-import css from "../SearchBar/SearchBar.module.css";
+import PropTypes from "prop-types";
+import css from "./SearchForm.module.css";
 
-function SearchBar({ onSubmit }) {
+function SearchForm({ onSubmit }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -15,8 +16,8 @@ function SearchBar({ onSubmit }) {
       });
     }
     onSubmit(formValue);
-
     form.reset();
+    form.elements.search.focus();
   };
 
   return (
@@ -36,4 +37,8 @@ function SearchBar({ onSubmit }) {
   );
 }
 
-export default SearchBar;
+SearchForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};
+
+export default SearchForm;

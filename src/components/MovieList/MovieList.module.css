@@ -13,6 +13,7 @@
   background-color: rgb(50, 49, 49);
   border-radius: 30px;
   transition: transform 0.3s ease;
+  max-width: 250px;
 }
 
 .movieCard:hover {
@@ -20,6 +21,7 @@
 }
 .poster {
   border-radius: 30px;
+  max-width: 250px;
 }
 
 .title {

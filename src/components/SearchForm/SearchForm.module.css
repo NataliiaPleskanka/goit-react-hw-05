@@ -3,11 +3,13 @@
   justify-content: center;
   margin: auto;
   width: 300px;
+  position: static;
 }
 
 .inputWrapper {
   position: relative;
   width: 100%;
+  margin-top: 60px;
 }
 
 .input {
