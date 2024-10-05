@@ -1,7 +1,7 @@
 import { useSearchParams } from "react-router-dom";
 import css from "./SearchForm.module.css";
 
-export default function SearchForm({ onSubmit }) {
+function SearchForm({ onSubmit }) {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const handleSubmit = (event) => {
@@ -28,3 +28,5 @@ export default function SearchForm({ onSubmit }) {
     </form>
   );
 }
+
+export default SearchForm;

@@ -4,6 +4,9 @@
 .wrapperGoBack {
   padding-bottom: 20px;
 }
+.linkGoBack {
+  color: white;
+}
 .linkGoBack:hover {
   color: brown;
 }

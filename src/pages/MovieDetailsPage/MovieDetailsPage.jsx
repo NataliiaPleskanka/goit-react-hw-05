@@ -5,7 +5,7 @@ import {
   useLocation,
   Outlet,
 } from "react-router-dom";
-import { useEffect, useState, Suspense } from "react";
+import { useEffect, useState, Suspense, useRef } from "react";
 import { fetchMovieById } from "../../services/tmdb-api";
 import Loader from "../../components/Loader/Loader";
 import css from "./MovieDetailsPage.module.css";
@@ -17,6 +17,9 @@ const defaultImg =
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
   const location = useLocation();
+
+  const backLink = useRef(location.state?.from ?? "/");
+
   const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -47,7 +50,7 @@ const MovieDetailsPage = () => {
   return (
     <div className={css.wrapperDetails}>
       <div className={css.wrapperGoBack}>
-        <Link className={css.linkGoBack} to={location.state?.from ?? "/"}>
+        <Link className={css.linkGoBack} to={backLink.current}>
           Go back
         </Link>
       </div>

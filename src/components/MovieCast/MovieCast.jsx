@@ -27,16 +27,13 @@ const MovieCast = () => {
     getCast();
   }, [movieId]);
 
-  if (loading) return <p>Loading movie details...</p>;
+  if (loading) return <p>Loading cast details...</p>;
+  if (!cast.length)
+    return <h2>Cast information for this movie is currently unavailable</h2>;
 
   return (
     <div>
       <ul className={css.actorList}>
-        {" "}
-        {error && <div>Something went wrong, please try again</div>}
-        {cast.length === 0 && !error && (
-          <p>No cast information available for this movie.</p>
-        )}
         {cast.map((person) => (
           <li className={css.personCard} key={person.cast_id}>
             <img
