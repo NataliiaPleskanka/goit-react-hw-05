@@ -1,32 +1,39 @@
-import { useSearchParams } from "react-router-dom";
-import css from "./SearchForm.module.css";
+import toast from "react-hot-toast";
+import { FaSearch } from "react-icons/fa";
+import css from "../SearchBar/SearchBar.module.css";
 
-function SearchForm({ onSubmit }) {
-  const [searchParams, setSearchParams] = useSearchParams();
+function SearchBar({ onSubmit }) {
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+    const form = e.target;
+    const formValue = form.elements.search.value.trim();
 
-    searchParams.set("movie", event.target.elements.movie.value);
-    setSearchParams(searchParams);
+    if (formValue === "") {
+      return toast.error("Please, specify your request.", {
+        position: "top-right",
+      });
+    }
+    onSubmit(formValue);
 
-    event.target.reset();
+    form.reset();
   };
 
   return (
-    <form className={css.form} onSubmit={handleSubmit}>
-      <input
-        className={css.field}
-        type="text"
-        name="movie"
-        autoComplete="off"
-        placeholder="Enter title of movies"
-      />
-      <button className={css.btn} type="submit">
-        Search
-      </button>
+    <form onSubmit={handleSubmit} className={css.form}>
+      <div className={css.inputWrapper}>
+        <button className={css.btn} type="submit">
+          <FaSearch size="18px" />
+        </button>
+        <input
+          className={css.input}
+          type="text"
+          placeholder="Search movies..."
+          name="search"
+        />
+      </div>
     </form>
   );
 }
 
-export default SearchForm;
+export default SearchBar;
