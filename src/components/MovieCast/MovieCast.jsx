@@ -27,6 +27,7 @@ const MovieCast = () => {
     getCast();
   }, [movieId]);
 
+  if (error) return <p>Something went wrong! Please try again later.</p>;
   if (loading) return <p>Loading cast details...</p>;
   if (!cast.length)
     return <h2>Cast information for this movie is currently unavailable</h2>;

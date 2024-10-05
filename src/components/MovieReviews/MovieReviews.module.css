@@ -1,0 +1,11 @@
+.reviewsList {
+  padding: 10px;
+  background-color: rgb(50, 49, 49);
+  border-radius: 30px;
+  transition: transform 0.3s ease;
+  margin: 15px 0;
+}
+.author {
+  font-weight: 700;
+  color: brown;
+}
